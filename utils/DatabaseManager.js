@@ -6,6 +6,12 @@ class DatabaseManager {
     this.password = password;
     this.host = host;
     this.databaseName = databaseName;
+    this.connection = mysql.createConnection({
+      host: this.host,
+      user: this.username,
+      password: this.password,
+      database: this.database
+    });
   }
 }
 
