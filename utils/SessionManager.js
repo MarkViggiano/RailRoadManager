@@ -23,6 +23,6 @@ class SessionManager {
     this.removeSessionById(session.id);
   }
 
-
-
 }
+
+module.exports = SessionManager;

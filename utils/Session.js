@@ -2,10 +2,12 @@ class Session {
   #id;
   #name;
   #trains;
+  #layout;
 
-  constructor(id, name) {
-    this.#name = name;
+  constructor(id, name, layout) {
     this.#id = id;
+    this.#name = name;
+    this.#layout = layout;
     this.#trains = new Map();
   }
 
@@ -15,6 +17,10 @@ class Session {
 
   getName() {
     return this.#name;
+  }
+
+  getLayout() {
+    return this.#layout;
   }
 
   getTrainById(id) {
@@ -38,3 +44,5 @@ class Session {
   }
 
 }
+
+module.exports = Session;
