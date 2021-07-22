@@ -5,6 +5,7 @@ class SessionManager {
   constructor(databaseManager) {
     this.#databaseManager = databaseManager;
     this.#sessionMap = new Map();
+    console.log("SessionManager created!");
   }
 
   getSessionById(id) {
