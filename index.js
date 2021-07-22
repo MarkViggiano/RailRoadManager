@@ -3,7 +3,9 @@ const app = express();
 const ejs = require("ejs")
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 8000;
-const dbManager = "dbManager"; // TODO: change this to an instance of DatabaseManager
+const config = require("./config.json");
+const DatabaseManager = require("./utils/DatabaseManager");
+const dbManager = new DatabaseManager(config.username, config.password, config.host, config.database);
 
 const SessionsRoute = require("./routes/Sessions");
 
@@ -17,7 +19,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use("/login", new SessionsRoute(dbManager).router);
+app.use("/sessions", new SessionsRoute(dbManager).router);
 
 app.listen(port, () => {
   console.log(`RRM is listening on port: ${port}`);

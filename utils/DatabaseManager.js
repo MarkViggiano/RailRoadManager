@@ -18,6 +18,7 @@ class DatabaseManager {
       password: this.password,
       database: this.database
     });
+    console.log("Database connection established!")
   }
 }
 

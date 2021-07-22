@@ -37,7 +37,7 @@ class Session {
 
   getTrainsAsList() {
     let trains = [];
-    for (const [key, value] of Object.entries(this.trains)) {
+    for (const [key, value] of Object.entries(this.#trains)) {
       trains.append(value);
     }
     return trains;
