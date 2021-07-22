@@ -1,8 +1,10 @@
 const Route = require("./Route");
 
-class Login extends Route {
-  constructor(databaseManager) {
+class Sessions extends Route {
+  constructor(databaseManager, sessionManager) {
     super(databaseManager);
+
+    this.sessionManager = sessionManager;
   }
 
   registerRoutes() {
@@ -13,4 +15,4 @@ class Login extends Route {
 
 }
 
-module.exports = Login;
+module.exports = Sessions;
