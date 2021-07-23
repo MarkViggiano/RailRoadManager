@@ -13,6 +13,10 @@ class Sessions extends Route {
     this.router.get("/", (req, res) => {
       res.send(this.#sessionManager.getSessionsAsList());
     })
+
+    this.router.get("/get/:sessionId?", (req, res) => {
+      res.send(this.#sessionManager.getSessionById(req.params.sessionId));
+    })
   }
 
 }
