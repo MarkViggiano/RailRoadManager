@@ -4,11 +4,14 @@ const ejs = require("ejs")
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 8000;
 const config = require("./config.json");
+
+//utils
 const DatabaseManager = require("./utils/DatabaseManager");
 const SessionManager = require("./utils/SessionManager");
 const dbManager = new DatabaseManager(config.username, config.password, config.host, config.database);
 const sessionManager = new SessionManager(dbManager);
 
+//routes
 const SessionsRoute = require("./routes/Sessions");
 
 app.enable('verbose errors');

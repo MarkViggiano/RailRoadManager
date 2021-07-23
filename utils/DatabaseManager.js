@@ -19,7 +19,13 @@ class DatabaseManager {
       database: this.database
     });
     console.log("Database connection established!")
+    this.#createTables();
   }
+
+  #createTables() {
+
+  }
+
 }
 
 module.exports = DatabaseManager;
