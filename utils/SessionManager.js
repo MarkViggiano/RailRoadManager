@@ -24,6 +24,15 @@ class SessionManager {
     this.removeSessionById(session.id);
   }
 
+  getSessionsAsList() {
+    let sessions = [];
+    for (const [key, value] of Object.entries(this.#sessionMap)) {
+      sessions.append(value);
+    }
+
+    return sessions;
+  }
+
 }
 
 module.exports = SessionManager;

@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use("/sessions", new SessionsRoute(dbManager).router);
+app.use("/sessions", new SessionsRoute(dbManager, sessionManager).router);
 
 app.listen(port, () => {
   console.log(`RRM is listening on port: ${port}`);
