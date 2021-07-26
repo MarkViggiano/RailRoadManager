@@ -1,30 +1,52 @@
-class Train {
-  #name;
-  #cars;
-  #engines;
+/*
+Train Table Data:
 
-  constructor(name) {
+id - VARCHAR
+name - VARCHAR
+rollingStockId - VARCHAR
+layoutId - VARCHAR
+isEngine - BOOLEAN
+*/
+
+class Train {
+  #id;
+  #name;
+  #rollingStock;
+  #engines;
+  #layoutId;
+
+  constructor(id, name, layoutId) {
+    this.#id = id;
     this.#name = name;
-    this.#cars = [];
+    this.#rollingStock = [];
     this.#engines = [];
+    this.#layoutId = layoutId;
+  }
+
+  getId() {
+    return this.#id;
   }
 
   getName() {
     this.#name;
   }
 
-  getCars() {
-    return this.#cars;
+  getRollingStock() {
+    return this.#rollingStock;
   }
 
   getEngines() {
     return this.#engines;
   }
 
+  getLayoutId() {
+    return this.#layout;
+  }
+
   getTrainLength() {
     let trainLength = 0;
 
-    for (const car of this.getCars()) {
+    for (const car of this.getRollingStock()) {
       trainLength += car.getLength();
     }
 

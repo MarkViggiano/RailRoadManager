@@ -1,13 +1,21 @@
+/*
+Session Table Data:
+
+id - VARCHAR
+name - VARCHAR
+layoutId - VARCHAR
+*/
+
 class Session {
   #id;
   #name;
   #trains;
-  #layout;
+  #layoutId;
 
-  constructor(id, name, layout) {
+  constructor(id, name, layoutId) {
     this.#id = id;
     this.#name = name;
-    this.#layout = layout;
+    this.#layoutId = layoutId;
     this.#trains = new Map();
   }
 
@@ -19,8 +27,8 @@ class Session {
     return this.#name;
   }
 
-  getLayout() {
-    return this.#layout;
+  getLayoutId() {
+    return this.#layoutId;
   }
 
   getTrainById(id) {
