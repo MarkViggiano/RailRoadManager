@@ -8,11 +8,14 @@ const config = require("./config.json");
 //utils
 const DatabaseManager = require("./utils/DatabaseManager");
 const SessionManager = require("./utils/SessionManager");
+const LayoutManager = require("./utils/layout/LayoutManager");
 const dbManager = new DatabaseManager(config.username, config.password, config.host, config.database);
 const sessionManager = new SessionManager(dbManager);
+const layoutManager = new LayoutManager(dbManager);
 
 //routes
 const SessionsRoute = require("./routes/Sessions");
+const LayoutsRoute = require("./routes/Layouts");
 
 app.enable('verbose errors');
 require('events').EventEmitter.defaultMaxListeners = 0;
@@ -25,6 +28,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use("/sessions", new SessionsRoute(dbManager, sessionManager).router);
+app.use("/layouts", new LayoutsRoute(dbManager, layoutManager).router);
 
 app.listen(port, () => {
   console.log(`RRM is listening on port: ${port}`);

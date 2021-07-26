@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+const { uuid } = require("uuid");
 const Layout = require("./Layout");
 const Train = require("./Train")
 

@@ -40,7 +40,7 @@ class Train {
   }
 
   getLayoutId() {
-    return this.#layout;
+    return this.#layoutId;
   }
 
   getTrainLength() {
