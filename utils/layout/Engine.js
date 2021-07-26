@@ -3,8 +3,8 @@ const RollingStock = require("./RollingStock");
 class Engine extends RollingStock {
   #motorCount;
 
-  constructor(motorCount, length, height, roadNumber) {
-    super(length, height, roadNumber);
+  constructor(motorCount, length, height, roadNumber, layoutId) {
+    super(length, height, roadNumber, layoutId);
 
     this.#motorCount = motorCount;
   }
