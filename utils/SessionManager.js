@@ -1,3 +1,6 @@
+const { uuid } = require("uuid");
+const Session = require("./Session");
+
 class SessionManager {
   #sessionMap;
   #databaseManager;
@@ -31,6 +34,18 @@ class SessionManager {
     }
 
     return sessions;
+  }
+
+  createNewSession(name, layoutId) {
+    //check in-memory for duplicate names
+    let sessions = this.getSessionsAsList();
+    for (const session of sessions) {
+      if (session.getName().toLowerCase() == name.toLowerCase()) return null;
+    }
+
+    let session = new Session(uuid(), name, layoutId);
+    this.#databaseManager.saveNewSession(session);
+    return session;
   }
 
 }

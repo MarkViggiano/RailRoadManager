@@ -37,14 +37,20 @@ class LayoutManager {
     return layouts;
   }
 
-  static createNewLayout(name, scale) {
-    let id = uuid();
-    let layout = new Layout(id, scale, name);
+  createNewLayout(name, scale) {
+    //check in-memory for duplicate names
+    let layouts = this.getLayoutsAsList();
+    for (const layout of layouts) {
+      if (layout.getName().toLowerCase() == name.toLowerCase()) return null;
+    }
+
+    let layout = new Layout(uuid(), scale, name);
     this.addLayout(layout);
+    this.#databaseManager.saveNewLayout(layout);
     return layout;
   }
 
-  static createNewTrain(name, layoutId) {
+  createNewTrain(name, layoutId) {
     return new Train(uuid(), name, layoutId)
   }
 
