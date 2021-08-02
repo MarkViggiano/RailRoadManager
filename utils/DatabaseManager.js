@@ -65,9 +65,13 @@ class DatabaseManager {
   }
 
   deleteLayout(layout) {
-    let scale = layout.getScale();
     let name = layout.getName();
     let id = layout.getId();
+
+    this.#connection.query("DELETE FROM layouts WHERE id=?", [id], (error, result) => {
+      if (error) throw error;
+      console.log(`[DatabaseManager] Deleted layout: ${name}`);
+    });
   }
 
   /*
@@ -84,6 +88,16 @@ class DatabaseManager {
     this.#connection.query("IF NOT EXISTS (SELECT * FROM sessions WHERE name=?) BEGIN INSERT INTO sessions (id, name, layoutId) VALUES (?, ?, ?)", [id, name, layoutId], (error, result) => {
       if (error) throw error;
       console.log(`[DatabaseManager] Saved session: ${session}`);
+    });
+  }
+
+  deleteSession(session) {
+    let id = session.getId();
+    let name = session.getName();
+
+    this.#connection.query("DELETE FROM sessions WHERE id=?", [id], (error, result) => {
+      if (error) throw error;
+      console.log(`[DatabaseManager] Deleted session: ${name}`);
     });
   }
 
